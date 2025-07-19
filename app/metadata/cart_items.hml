@@ -1,0 +1,202 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: cart_items
+  fields:
+    - name: cart_id
+      type: uuid!
+    - name: created_at
+      type: timestamptz
+    - name: id
+      type: uuid!
+    - name: product_id
+      type: uuid!
+    - name: quantity
+      type: int_32!
+    - name: updated_at
+      type: timestamptz
+  graphql:
+    typeName: cart_items
+    inputTypeName: cart_items_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: cart_items
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: cart_items
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - cart_id
+          - created_at
+          - id
+          - product_id
+          - quantity
+          - updated_at
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: cart_items_agg_exp
+  operand:
+    object:
+      aggregatedType: cart_items
+      aggregatableFields:
+        - fieldName: cart_id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: created_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: product_id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: quantity
+          aggregateExpression: int_4_agg_exp
+        - fieldName: updated_at
+          aggregateExpression: timestamptz_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: cart_items_agg_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: cart_items
+  objectType: cart_items
+  source:
+    dataConnectorName: ecommerce_db
+    collection: cart_items
+  filterExpressionType: cart_items_bool_exp
+  aggregateExpression: cart_items_agg_exp
+  orderByExpression: cart_items_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: cart_items
+      subscription:
+        rootField: cart_items
+    selectUniques:
+      - queryRootField: cart_items_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: cart_items_by_id
+    filterInputTypeName: cart_items_filter_input
+    aggregate:
+      queryRootField: cart_items_aggregate
+      subscription:
+        rootField: cart_items_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: cart_items
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: cart
+  sourceType: cart_items
+  target:
+    model:
+      name: carts
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: cart_id
+      target:
+        modelField:
+          - fieldName: id
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: product
+  sourceType: cart_items
+  target:
+    model:
+      name: products
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: product_id
+      target:
+        modelField:
+          - fieldName: id
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: cart_items_bool_exp
+  operand:
+    object:
+      type: cart_items
+      comparableFields:
+        - fieldName: cart_id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: created_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: product_id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: quantity
+          booleanExpressionType: int_4_bool_exp
+        - fieldName: updated_at
+          booleanExpressionType: timestamptz_bool_exp
+      comparableRelationships:
+        - relationshipName: cart
+        - relationshipName: product
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: cart_items_bool_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: cart_items_order_by_exp
+  operand:
+    object:
+      orderedType: cart_items
+      orderableFields:
+        - fieldName: cart_id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: created_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: product_id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: quantity
+          orderByExpression: int_32_order_by_exp
+        - fieldName: updated_at
+          orderByExpression: timestamptz_order_by_exp
+      orderableRelationships:
+        - relationshipName: cart
+        - relationshipName: product
+  graphql:
+    expressionTypeName: cart_items_order_by_exp
+

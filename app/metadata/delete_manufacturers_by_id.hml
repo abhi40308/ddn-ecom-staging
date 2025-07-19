@@ -1,0 +1,62 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_manufacturers_by_id_response
+  description: Responses from the 'delete_manufacturers_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[manufacturers!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: delete_manufacturers_by_id_response
+    inputTypeName: delete_manufacturers_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: delete_manufacturers_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_manufacturers_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_manufacturers_by_id
+  outputType: delete_manufacturers_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: pre_check
+      type: manufacturers_bool_exp
+      description: Delete permission predicate over the 'manufacturers' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: delete_manufacturers_by_id
+  graphql:
+    rootFieldName: delete_manufacturers_by_id
+    rootFieldKind: Mutation
+  description: Delete any row on the 'manufacturers' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_manufacturers_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -7,3 +7,13 @@ definition:
     namingConvention: snake_case
   includePaths:
     - metadata
+  envMapping:
+    APP_ECOMMERCE_DB_AUTHORIZATION_HEADER:
+      fromEnv: APP_ECOMMERCE_DB_AUTHORIZATION_HEADER
+    APP_ECOMMERCE_DB_READ_URL:
+      fromEnv: APP_ECOMMERCE_DB_READ_URL
+    APP_ECOMMERCE_DB_WRITE_URL:
+      fromEnv: APP_ECOMMERCE_DB_WRITE_URL
+  connectors:
+    - path: connector/ecommerce_db/connector.yaml
+      connectorLinkName: ecommerce_db

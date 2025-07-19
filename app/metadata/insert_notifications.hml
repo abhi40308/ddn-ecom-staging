@@ -1,0 +1,100 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_notifications_object
+  fields:
+    - name: created_at
+      type: timestamptz
+    - name: id
+      type: uuid
+    - name: message
+      type: string!
+    - name: updated_at
+      type: timestamptz
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: insert_notifications_object
+    inputTypeName: insert_notifications_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_notifications_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_notifications_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - message
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_notifications_response
+  description: Responses from the 'insert_notifications' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[notifications!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_notifications_response
+    inputTypeName: insert_notifications_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_notifications_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_notifications_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_notifications
+  outputType: insert_notifications_response!
+  arguments:
+    - name: objects
+      type: "[insert_notifications_object!]!"
+    - name: post_check
+      type: notifications_bool_exp
+      description: Insert permission predicate over the 'notifications' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: insert_notifications
+  graphql:
+    rootFieldName: insert_notifications
+    rootFieldKind: Mutation
+  description: Insert into the notifications table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_notifications
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,3 +1,5 @@
+include:
+  - path: app/connector/ecommerce_db/compose.yaml
 services:
   engine:
     build:

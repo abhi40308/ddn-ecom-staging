@@ -1,0 +1,273 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_notifications_created_at
+  description: Update the 'created_at' column in the 'notifications' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_notifications_created_at
+    inputTypeName: update_column_notifications_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_notifications_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_notifications_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_notifications_id
+  description: Update the 'id' column in the 'notifications' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_notifications_id
+    inputTypeName: update_column_notifications_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_notifications_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_notifications_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_notifications_message
+  description: Update the 'message' column in the 'notifications' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_notifications_message
+    inputTypeName: update_column_notifications_message_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_notifications_message
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_notifications_message
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_notifications_updated_at
+  description: Update the 'updated_at' column in the 'notifications' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_notifications_updated_at
+    inputTypeName: update_column_notifications_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_notifications_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_notifications_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_notifications_user_id
+  description: Update the 'user_id' column in the 'notifications' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_notifications_user_id
+    inputTypeName: update_column_notifications_user_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_notifications_user_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_notifications_user_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_notifications_by_id_update_columns
+  description: Update the columns of the 'notifications' collection
+  fields:
+    - name: created_at
+      type: update_column_notifications_created_at
+      description: Update the 'created_at' column in the 'notifications' collection.
+    - name: id
+      type: update_column_notifications_id
+      description: Update the 'id' column in the 'notifications' collection.
+    - name: message
+      type: update_column_notifications_message
+      description: Update the 'message' column in the 'notifications' collection.
+    - name: updated_at
+      type: update_column_notifications_updated_at
+      description: Update the 'updated_at' column in the 'notifications' collection.
+    - name: user_id
+      type: update_column_notifications_user_id
+      description: Update the 'user_id' column in the 'notifications' collection.
+  graphql:
+    typeName: update_notifications_by_id_update_columns
+    inputTypeName: update_notifications_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_notifications_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_notifications_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - message
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_notifications_by_id_response
+  description: Responses from the 'update_notifications_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[notifications!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_notifications_by_id_response
+    inputTypeName: update_notifications_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_notifications_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_notifications_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_notifications_by_id
+  outputType: update_notifications_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: notifications_bool_exp
+      description: Update permission post-condition predicate over the 'notifications'
+        collection
+    - name: pre_check
+      type: notifications_bool_exp
+      description: Update permission pre-condition predicate over the 'notifications'
+        collection
+    - name: update_columns
+      type: update_notifications_by_id_update_columns!
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: update_notifications_by_id
+  graphql:
+    rootFieldName: update_notifications_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'notifications' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_notifications_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

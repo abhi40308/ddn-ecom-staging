@@ -1,0 +1,379 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_created_at
+  description: Update the 'created_at' column in the 'orders' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_created_at
+    inputTypeName: update_column_orders_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_delivery_date
+  description: Update the 'delivery_date' column in the 'orders' collection
+  fields:
+    - name: set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_delivery_date
+    inputTypeName: update_column_orders_delivery_date_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_delivery_date
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_delivery_date
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_id
+  description: Update the 'id' column in the 'orders' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_id
+    inputTypeName: update_column_orders_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_is_reviewed
+  description: Update the 'is_reviewed' column in the 'orders' collection
+  fields:
+    - name: set
+      type: boolean!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_is_reviewed
+    inputTypeName: update_column_orders_is_reviewed_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_is_reviewed
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_is_reviewed
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_product_id
+  description: Update the 'product_id' column in the 'orders' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_product_id
+    inputTypeName: update_column_orders_product_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_product_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_product_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_status
+  description: Update the 'status' column in the 'orders' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_status
+    inputTypeName: update_column_orders_status_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_status
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_status
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_updated_at
+  description: Update the 'updated_at' column in the 'orders' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_updated_at
+    inputTypeName: update_column_orders_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_orders_user_id
+  description: Update the 'user_id' column in the 'orders' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_orders_user_id
+    inputTypeName: update_column_orders_user_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_orders_user_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_orders_user_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_orders_by_id_update_columns
+  description: Update the columns of the 'orders' collection
+  fields:
+    - name: created_at
+      type: update_column_orders_created_at
+      description: Update the 'created_at' column in the 'orders' collection.
+    - name: delivery_date
+      type: update_column_orders_delivery_date
+      description: Update the 'delivery_date' column in the 'orders' collection.
+    - name: id
+      type: update_column_orders_id
+      description: Update the 'id' column in the 'orders' collection.
+    - name: is_reviewed
+      type: update_column_orders_is_reviewed
+      description: Update the 'is_reviewed' column in the 'orders' collection.
+    - name: product_id
+      type: update_column_orders_product_id
+      description: Update the 'product_id' column in the 'orders' collection.
+    - name: status
+      type: update_column_orders_status
+      description: Update the 'status' column in the 'orders' collection.
+    - name: updated_at
+      type: update_column_orders_updated_at
+      description: Update the 'updated_at' column in the 'orders' collection.
+    - name: user_id
+      type: update_column_orders_user_id
+      description: Update the 'user_id' column in the 'orders' collection.
+  graphql:
+    typeName: update_orders_by_id_update_columns
+    inputTypeName: update_orders_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_orders_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_orders_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - delivery_date
+          - id
+          - is_reviewed
+          - product_id
+          - status
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_orders_by_id_response
+  description: Responses from the 'update_orders_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[orders!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_orders_by_id_response
+    inputTypeName: update_orders_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_orders_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_orders_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_orders_by_id
+  outputType: update_orders_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: orders_bool_exp
+      description: Update permission post-condition predicate over the 'orders' collection
+    - name: pre_check
+      type: orders_bool_exp
+      description: Update permission pre-condition predicate over the 'orders' collection
+    - name: update_columns
+      type: update_orders_by_id_update_columns!
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: update_orders_by_id
+  graphql:
+    rootFieldName: update_orders_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'orders' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_orders_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

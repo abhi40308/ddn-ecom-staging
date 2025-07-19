@@ -1,0 +1,109 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_reviews_object
+  fields:
+    - name: created_at
+      type: timestamptz
+    - name: id
+      type: uuid
+    - name: is_visible
+      type: boolean
+    - name: product_id
+      type: uuid!
+    - name: rating
+      type: int_32!
+    - name: text
+      type: string!
+    - name: updated_at
+      type: timestamptz
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: insert_reviews_object
+    inputTypeName: insert_reviews_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_reviews_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_reviews_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - is_visible
+          - product_id
+          - rating
+          - text
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_reviews_response
+  description: Responses from the 'insert_reviews' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[reviews!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_reviews_response
+    inputTypeName: insert_reviews_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_reviews_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_reviews_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_reviews
+  outputType: insert_reviews_response!
+  arguments:
+    - name: objects
+      type: "[insert_reviews_object!]!"
+    - name: post_check
+      type: reviews_bool_exp
+      description: Insert permission predicate over the 'reviews' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: insert_reviews
+  graphql:
+    rootFieldName: insert_reviews
+    rootFieldKind: Mutation
+  description: Insert into the reviews table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_reviews
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,307 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_created_at
+  description: Update the 'created_at' column in the 'carts' collection
+  fields:
+    - name: set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_created_at
+    inputTypeName: update_column_carts_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_id
+  description: Update the 'id' column in the 'carts' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_id
+    inputTypeName: update_column_carts_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_is_complete
+  description: Update the 'is_complete' column in the 'carts' collection
+  fields:
+    - name: set
+      type: boolean!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_is_complete
+    inputTypeName: update_column_carts_is_complete_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_is_complete
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_is_complete
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_is_reminder_sent
+  description: Update the 'is_reminder_sent' column in the 'carts' collection
+  fields:
+    - name: set
+      type: boolean!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_is_reminder_sent
+    inputTypeName: update_column_carts_is_reminder_sent_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_is_reminder_sent
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_is_reminder_sent
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_updated_at
+  description: Update the 'updated_at' column in the 'carts' collection
+  fields:
+    - name: set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_updated_at
+    inputTypeName: update_column_carts_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_carts_user_id
+  description: Update the 'user_id' column in the 'carts' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_carts_user_id
+    inputTypeName: update_column_carts_user_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_carts_user_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_carts_user_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_carts_by_id_update_columns
+  description: Update the columns of the 'carts' collection
+  fields:
+    - name: created_at
+      type: update_column_carts_created_at
+      description: Update the 'created_at' column in the 'carts' collection.
+    - name: id
+      type: update_column_carts_id
+      description: Update the 'id' column in the 'carts' collection.
+    - name: is_complete
+      type: update_column_carts_is_complete
+      description: Update the 'is_complete' column in the 'carts' collection.
+    - name: is_reminder_sent
+      type: update_column_carts_is_reminder_sent
+      description: Update the 'is_reminder_sent' column in the 'carts' collection.
+    - name: updated_at
+      type: update_column_carts_updated_at
+      description: Update the 'updated_at' column in the 'carts' collection.
+    - name: user_id
+      type: update_column_carts_user_id
+      description: Update the 'user_id' column in the 'carts' collection.
+  graphql:
+    typeName: update_carts_by_id_update_columns
+    inputTypeName: update_carts_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_carts_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_carts_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - is_complete
+          - is_reminder_sent
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_carts_by_id_response
+  description: Responses from the 'update_carts_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[carts!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_carts_by_id_response
+    inputTypeName: update_carts_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_carts_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_carts_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_carts_by_id
+  outputType: update_carts_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: carts_bool_exp
+      description: Update permission post-condition predicate over the 'carts' collection
+    - name: pre_check
+      type: carts_bool_exp
+      description: Update permission pre-condition predicate over the 'carts' collection
+    - name: update_columns
+      type: update_carts_by_id_update_columns!
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: update_carts_by_id
+  graphql:
+    rootFieldName: update_carts_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'carts' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_carts_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,205 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: carts
+  fields:
+    - name: created_at
+      type: timestamptz
+    - name: id
+      type: uuid!
+    - name: is_complete
+      type: boolean!
+    - name: is_reminder_sent
+      type: boolean!
+    - name: updated_at
+      type: timestamptz
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: carts
+    inputTypeName: carts_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: carts
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: carts
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - is_complete
+          - is_reminder_sent
+          - updated_at
+          - user_id
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: carts_agg_exp
+  operand:
+    object:
+      aggregatedType: carts
+      aggregatableFields:
+        - fieldName: created_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: is_complete
+          aggregateExpression: bool_agg_exp
+        - fieldName: is_reminder_sent
+          aggregateExpression: bool_agg_exp
+        - fieldName: updated_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: user_id
+          aggregateExpression: uuid_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: carts_agg_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: carts
+  objectType: carts
+  source:
+    dataConnectorName: ecommerce_db
+    collection: carts
+  filterExpressionType: carts_bool_exp
+  aggregateExpression: carts_agg_exp
+  orderByExpression: carts_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: carts
+      subscription:
+        rootField: carts
+    selectUniques:
+      - queryRootField: carts_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: carts_by_id
+    filterInputTypeName: carts_filter_input
+    aggregate:
+      queryRootField: carts_aggregate
+      subscription:
+        rootField: carts_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: carts
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: cart_items
+  sourceType: carts
+  target:
+    model:
+      name: cart_items
+      relationshipType: Array
+      aggregate:
+        aggregateExpression: cart_items_agg_exp
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: id
+      target:
+        modelField:
+          - fieldName: cart_id
+  graphql:
+    aggregateFieldName: cart_items_aggregate
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: user
+  sourceType: carts
+  target:
+    model:
+      name: users
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: user_id
+      target:
+        modelField:
+          - fieldName: id
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: carts_bool_exp
+  operand:
+    object:
+      type: carts
+      comparableFields:
+        - fieldName: created_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: is_complete
+          booleanExpressionType: bool_bool_exp
+        - fieldName: is_reminder_sent
+          booleanExpressionType: bool_bool_exp
+        - fieldName: updated_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: user_id
+          booleanExpressionType: uuid_bool_exp
+      comparableRelationships:
+        - relationshipName: cart_items
+        - relationshipName: user
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: carts_bool_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: carts_order_by_exp
+  operand:
+    object:
+      orderedType: carts
+      orderableFields:
+        - fieldName: created_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: is_complete
+          orderByExpression: boolean_order_by_exp
+        - fieldName: is_reminder_sent
+          orderByExpression: boolean_order_by_exp
+        - fieldName: updated_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: user_id
+          orderByExpression: uuid_order_by_exp
+      orderableRelationships:
+        - relationshipName: user
+  graphql:
+    expressionTypeName: carts_order_by_exp
+

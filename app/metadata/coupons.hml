@@ -1,0 +1,200 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: coupons
+  fields:
+    - name: amount
+      type: int_32
+    - name: code
+      type: string!
+    - name: created_at
+      type: timestamptz!
+    - name: expiration_date
+      type: timestamptz!
+    - name: id
+      type: uuid!
+    - name: percent_or_value
+      type: string
+    - name: updated_at
+      type: timestamptz!
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: coupons
+    inputTypeName: coupons_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: coupons
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: coupons
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - created_at
+          - expiration_date
+          - id
+          - percent_or_value
+          - updated_at
+          - user_id
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: coupons_agg_exp
+  operand:
+    object:
+      aggregatedType: coupons
+      aggregatableFields:
+        - fieldName: amount
+          aggregateExpression: int_4_agg_exp
+        - fieldName: code
+          aggregateExpression: text_agg_exp
+        - fieldName: created_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: expiration_date
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: percent_or_value
+          aggregateExpression: text_agg_exp
+        - fieldName: updated_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: user_id
+          aggregateExpression: uuid_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: coupons_agg_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: coupons
+  objectType: coupons
+  source:
+    dataConnectorName: ecommerce_db
+    collection: coupons
+  filterExpressionType: coupons_bool_exp
+  aggregateExpression: coupons_agg_exp
+  orderByExpression: coupons_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: coupons
+      subscription:
+        rootField: coupons
+    selectUniques:
+      - queryRootField: coupons_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: coupons_by_id
+    filterInputTypeName: coupons_filter_input
+    aggregate:
+      queryRootField: coupons_aggregate
+      subscription:
+        rootField: coupons_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: coupons
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: user
+  sourceType: coupons
+  target:
+    model:
+      name: users
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: user_id
+      target:
+        modelField:
+          - fieldName: id
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: coupons_bool_exp
+  operand:
+    object:
+      type: coupons
+      comparableFields:
+        - fieldName: amount
+          booleanExpressionType: int_4_bool_exp
+        - fieldName: code
+          booleanExpressionType: text_bool_exp
+        - fieldName: created_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: expiration_date
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: percent_or_value
+          booleanExpressionType: text_bool_exp
+        - fieldName: updated_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: user_id
+          booleanExpressionType: uuid_bool_exp
+      comparableRelationships:
+        - relationshipName: user
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: coupons_bool_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: coupons_order_by_exp
+  operand:
+    object:
+      orderedType: coupons
+      orderableFields:
+        - fieldName: amount
+          orderByExpression: int_32_order_by_exp
+        - fieldName: code
+          orderByExpression: string_order_by_exp
+        - fieldName: created_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: expiration_date
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: percent_or_value
+          orderByExpression: string_order_by_exp
+        - fieldName: updated_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: user_id
+          orderByExpression: uuid_order_by_exp
+      orderableRelationships:
+        - relationshipName: user
+  graphql:
+    expressionTypeName: coupons_order_by_exp
+

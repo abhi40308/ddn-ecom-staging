@@ -1,0 +1,415 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_created_at
+  description: Update the 'created_at' column in the 'users' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_created_at
+    inputTypeName: update_column_users_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_email
+  description: Update the 'email' column in the 'users' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_email
+    inputTypeName: update_column_users_email_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_email
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_email
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_favorite_artist
+  description: Update the 'favorite_artist' column in the 'users' collection
+  fields:
+    - name: set
+      type: int_32
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_favorite_artist
+    inputTypeName: update_column_users_favorite_artist_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_favorite_artist
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_favorite_artist
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_id
+  description: Update the 'id' column in the 'users' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_id
+    inputTypeName: update_column_users_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_is_email_verified
+  description: Update the 'is_email_verified' column in the 'users' collection
+  fields:
+    - name: set
+      type: boolean
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_is_email_verified
+    inputTypeName: update_column_users_is_email_verified_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_is_email_verified
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_is_email_verified
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_last_seen
+  description: Update the 'last_seen' column in the 'users' collection
+  fields:
+    - name: set
+      type: timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_last_seen
+    inputTypeName: update_column_users_last_seen_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_last_seen
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_last_seen
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_name
+  description: Update the 'name' column in the 'users' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_name
+    inputTypeName: update_column_users_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_name
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_password
+  description: Update the 'password' column in the 'users' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_password
+    inputTypeName: update_column_users_password_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_password
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_password
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_users_updated_at
+  description: Update the 'updated_at' column in the 'users' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_users_updated_at
+    inputTypeName: update_column_users_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_users_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_users_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_users_by_id_update_columns
+  description: Update the columns of the 'users' collection
+  fields:
+    - name: created_at
+      type: update_column_users_created_at
+      description: Update the 'created_at' column in the 'users' collection.
+    - name: email
+      type: update_column_users_email
+      description: Update the 'email' column in the 'users' collection.
+    - name: favorite_artist
+      type: update_column_users_favorite_artist
+      description: Update the 'favorite_artist' column in the 'users' collection.
+    - name: id
+      type: update_column_users_id
+      description: Update the 'id' column in the 'users' collection.
+    - name: is_email_verified
+      type: update_column_users_is_email_verified
+      description: Update the 'is_email_verified' column in the 'users' collection.
+    - name: last_seen
+      type: update_column_users_last_seen
+      description: Update the 'last_seen' column in the 'users' collection.
+    - name: name
+      type: update_column_users_name
+      description: Update the 'name' column in the 'users' collection.
+    - name: password
+      type: update_column_users_password
+      description: Update the 'password' column in the 'users' collection.
+    - name: updated_at
+      type: update_column_users_updated_at
+      description: Update the 'updated_at' column in the 'users' collection.
+  graphql:
+    typeName: update_users_by_id_update_columns
+    inputTypeName: update_users_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_users_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_users_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - email
+          - favorite_artist
+          - id
+          - is_email_verified
+          - last_seen
+          - name
+          - password
+          - updated_at
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_users_by_id_response
+  description: Responses from the 'update_users_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[users!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_users_by_id_response
+    inputTypeName: update_users_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_users_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_users_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_users_by_id
+  outputType: update_users_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: users_bool_exp
+      description: Update permission post-condition predicate over the 'users' collection
+    - name: pre_check
+      type: users_bool_exp
+      description: Update permission pre-condition predicate over the 'users' collection
+    - name: update_columns
+      type: update_users_by_id_update_columns!
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: update_users_by_id
+  graphql:
+    rootFieldName: update_users_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'users' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_users_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

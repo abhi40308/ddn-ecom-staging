@@ -1,0 +1,103 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_carts_object
+  fields:
+    - name: created_at
+      type: timestamptz
+    - name: id
+      type: uuid
+    - name: is_complete
+      type: boolean
+    - name: is_reminder_sent
+      type: boolean
+    - name: updated_at
+      type: timestamptz
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: insert_carts_object
+    inputTypeName: insert_carts_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_carts_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_carts_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - is_complete
+          - is_reminder_sent
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_carts_response
+  description: Responses from the 'insert_carts' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[carts!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_carts_response
+    inputTypeName: insert_carts_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_carts_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_carts_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_carts
+  outputType: insert_carts_response!
+  arguments:
+    - name: objects
+      type: "[insert_carts_object!]!"
+    - name: post_check
+      type: carts_bool_exp
+      description: Insert permission predicate over the 'carts' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: insert_carts
+  graphql:
+    rootFieldName: insert_carts
+    rootFieldKind: Mutation
+  description: Insert into the carts table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_carts
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,173 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: notifications
+  fields:
+    - name: created_at
+      type: timestamptz!
+    - name: id
+      type: uuid!
+    - name: message
+      type: string!
+    - name: updated_at
+      type: timestamptz!
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: notifications
+    inputTypeName: notifications_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: notifications
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: notifications
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - created_at
+          - id
+          - message
+          - updated_at
+          - user_id
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: notifications_agg_exp
+  operand:
+    object:
+      aggregatedType: notifications
+      aggregatableFields:
+        - fieldName: created_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: message
+          aggregateExpression: text_agg_exp
+        - fieldName: updated_at
+          aggregateExpression: timestamptz_agg_exp
+        - fieldName: user_id
+          aggregateExpression: uuid_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: notifications_agg_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: notifications
+  objectType: notifications
+  source:
+    dataConnectorName: ecommerce_db
+    collection: notifications
+  filterExpressionType: notifications_bool_exp
+  aggregateExpression: notifications_agg_exp
+  orderByExpression: notifications_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: notifications
+      subscription:
+        rootField: notifications
+    selectUniques:
+      - queryRootField: notifications_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: notifications_by_id
+    filterInputTypeName: notifications_filter_input
+    aggregate:
+      queryRootField: notifications_aggregate
+      subscription:
+        rootField: notifications_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: notifications
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: user
+  sourceType: notifications
+  target:
+    model:
+      name: users
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: user_id
+      target:
+        modelField:
+          - fieldName: id
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: notifications_bool_exp
+  operand:
+    object:
+      type: notifications
+      comparableFields:
+        - fieldName: created_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: message
+          booleanExpressionType: text_bool_exp
+        - fieldName: updated_at
+          booleanExpressionType: timestamptz_bool_exp
+        - fieldName: user_id
+          booleanExpressionType: uuid_bool_exp
+      comparableRelationships:
+        - relationshipName: user
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: notifications_bool_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: notifications_order_by_exp
+  operand:
+    object:
+      orderedType: notifications
+      orderableFields:
+        - fieldName: created_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: message
+          orderByExpression: string_order_by_exp
+        - fieldName: updated_at
+          orderByExpression: timestamptz_order_by_exp
+        - fieldName: user_id
+          orderByExpression: uuid_order_by_exp
+      orderableRelationships:
+        - relationshipName: user
+  graphql:
+    expressionTypeName: notifications_order_by_exp
+

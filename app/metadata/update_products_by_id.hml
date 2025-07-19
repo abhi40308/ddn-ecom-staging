@@ -1,0 +1,487 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_category_id
+  description: Update the 'category_id' column in the 'products' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_category_id
+    inputTypeName: update_column_products_category_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_category_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_category_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_country_of_origin
+  description: Update the 'country_of_origin' column in the 'products' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_country_of_origin
+    inputTypeName: update_column_products_country_of_origin_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_country_of_origin
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_country_of_origin
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_created_at
+  description: Update the 'created_at' column in the 'products' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_created_at
+    inputTypeName: update_column_products_created_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_created_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_description
+  description: Update the 'description' column in the 'products' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_description
+    inputTypeName: update_column_products_description_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_description
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_description
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_id
+  description: Update the 'id' column in the 'products' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_id
+    inputTypeName: update_column_products_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_image
+  description: Update the 'image' column in the 'products' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_image
+    inputTypeName: update_column_products_image_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_image
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_image
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_manufacturer_id
+  description: Update the 'manufacturer_id' column in the 'products' collection
+  fields:
+    - name: set
+      type: uuid!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_manufacturer_id
+    inputTypeName: update_column_products_manufacturer_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_manufacturer_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_manufacturer_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_name
+  description: Update the 'name' column in the 'products' collection
+  fields:
+    - name: set
+      type: string!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_name
+    inputTypeName: update_column_products_name_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_name
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_name
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_price
+  description: Update the 'price' column in the 'products' collection
+  fields:
+    - name: set
+      type: int_32!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_price
+    inputTypeName: update_column_products_price_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_price
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_price
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_updated_at
+  description: Update the 'updated_at' column in the 'products' collection
+  fields:
+    - name: set
+      type: timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_updated_at
+    inputTypeName: update_column_products_updated_at_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_updated_at
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_products_vector
+  description: Update the 'vector' column in the 'products' collection
+  fields:
+    - name: set
+      type: json
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_products_vector
+    inputTypeName: update_column_products_vector_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_column_products_vector
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_products_vector
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_products_by_id_update_columns
+  description: Update the columns of the 'products' collection
+  fields:
+    - name: category_id
+      type: update_column_products_category_id
+      description: Update the 'category_id' column in the 'products' collection.
+    - name: country_of_origin
+      type: update_column_products_country_of_origin
+      description: Update the 'country_of_origin' column in the 'products' collection.
+    - name: created_at
+      type: update_column_products_created_at
+      description: Update the 'created_at' column in the 'products' collection.
+    - name: description
+      type: update_column_products_description
+      description: Update the 'description' column in the 'products' collection.
+    - name: id
+      type: update_column_products_id
+      description: Update the 'id' column in the 'products' collection.
+    - name: image
+      type: update_column_products_image
+      description: Update the 'image' column in the 'products' collection.
+    - name: manufacturer_id
+      type: update_column_products_manufacturer_id
+      description: Update the 'manufacturer_id' column in the 'products' collection.
+    - name: name
+      type: update_column_products_name
+      description: Update the 'name' column in the 'products' collection.
+    - name: price
+      type: update_column_products_price
+      description: Update the 'price' column in the 'products' collection.
+    - name: updated_at
+      type: update_column_products_updated_at
+      description: Update the 'updated_at' column in the 'products' collection.
+    - name: vector
+      type: update_column_products_vector
+      description: Update the 'vector' column in the 'products' collection.
+  graphql:
+    typeName: update_products_by_id_update_columns
+    inputTypeName: update_products_by_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_products_by_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_products_by_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - category_id
+          - country_of_origin
+          - created_at
+          - description
+          - id
+          - image
+          - manufacturer_id
+          - name
+          - price
+          - updated_at
+          - vector
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_products_by_id_response
+  description: Responses from the 'update_products_by_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[products!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_products_by_id_response
+    inputTypeName: update_products_by_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: update_products_by_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_products_by_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_products_by_id
+  outputType: update_products_by_id_response!
+  arguments:
+    - name: key_id
+      type: uuid!
+    - name: post_check
+      type: products_bool_exp
+      description: Update permission post-condition predicate over the 'products' collection
+    - name: pre_check
+      type: products_bool_exp
+      description: Update permission pre-condition predicate over the 'products' collection
+    - name: update_columns
+      type: update_products_by_id_update_columns!
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: update_products_by_id
+  graphql:
+    rootFieldName: update_products_by_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'products' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_products_by_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

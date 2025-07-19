@@ -1,0 +1,91 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_manufacturers_object
+  fields:
+    - name: id
+      type: uuid
+    - name: name
+      type: string!
+  graphql:
+    typeName: insert_manufacturers_object
+    inputTypeName: insert_manufacturers_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_manufacturers_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_manufacturers_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_manufacturers_response
+  description: Responses from the 'insert_manufacturers' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[manufacturers!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_manufacturers_response
+    inputTypeName: insert_manufacturers_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_manufacturers_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_manufacturers_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_manufacturers
+  outputType: insert_manufacturers_response!
+  arguments:
+    - name: objects
+      type: "[insert_manufacturers_object!]!"
+    - name: post_check
+      type: manufacturers_bool_exp
+      description: Insert permission predicate over the 'manufacturers' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: insert_manufacturers
+  graphql:
+    rootFieldName: insert_manufacturers
+    rootFieldKind: Mutation
+  description: Insert into the manufacturers table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_manufacturers
+  permissions:
+    - role: admin
+      allowExecution: true
+

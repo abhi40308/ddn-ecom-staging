@@ -1,0 +1,149 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: manufacturers
+  fields:
+    - name: id
+      type: uuid!
+    - name: name
+      type: string!
+  graphql:
+    typeName: manufacturers
+    inputTypeName: manufacturers_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: manufacturers
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: manufacturers
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - id
+          - name
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: manufacturers_agg_exp
+  operand:
+    object:
+      aggregatedType: manufacturers
+      aggregatableFields:
+        - fieldName: id
+          aggregateExpression: uuid_agg_exp
+        - fieldName: name
+          aggregateExpression: text_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: manufacturers_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: manufacturers_order_by_exp
+  operand:
+    object:
+      orderedType: manufacturers
+      orderableFields:
+        - fieldName: id
+          orderByExpression: uuid_order_by_exp
+        - fieldName: name
+          orderByExpression: string_order_by_exp
+      orderableRelationships: []
+  graphql:
+    expressionTypeName: manufacturers_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: manufacturers
+  objectType: manufacturers
+  source:
+    dataConnectorName: ecommerce_db
+    collection: manufacturers
+  filterExpressionType: manufacturers_bool_exp
+  aggregateExpression: manufacturers_agg_exp
+  orderByExpression: manufacturers_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: manufacturers
+      subscription:
+        rootField: manufacturers
+    selectUniques:
+      - queryRootField: manufacturers_by_id
+        uniqueIdentifier:
+          - id
+        subscription:
+          rootField: manufacturers_by_id
+    filterInputTypeName: manufacturers_filter_input
+    aggregate:
+      queryRootField: manufacturers_aggregate
+      subscription:
+        rootField: manufacturers_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: manufacturers
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: products
+  sourceType: manufacturers
+  target:
+    model:
+      name: products
+      relationshipType: Array
+      aggregate:
+        aggregateExpression: products_agg_exp
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: id
+      target:
+        modelField:
+          - fieldName: manufacturer_id
+  graphql:
+    aggregateFieldName: products_aggregate
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: manufacturers_bool_exp
+  operand:
+    object:
+      type: manufacturers
+      comparableFields:
+        - fieldName: id
+          booleanExpressionType: uuid_bool_exp
+        - fieldName: name
+          booleanExpressionType: text_bool_exp
+      comparableRelationships:
+        - relationshipName: products
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: manufacturers_bool_exp
+

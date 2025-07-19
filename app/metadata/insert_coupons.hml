@@ -1,0 +1,109 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_coupons_object
+  fields:
+    - name: amount
+      type: int_32
+    - name: code
+      type: string!
+    - name: created_at
+      type: timestamptz
+    - name: expiration_date
+      type: timestamptz!
+    - name: id
+      type: uuid
+    - name: percent_or_value
+      type: string
+    - name: updated_at
+      type: timestamptz
+    - name: user_id
+      type: uuid!
+  graphql:
+    typeName: insert_coupons_object
+    inputTypeName: insert_coupons_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_coupons_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_coupons_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - code
+          - created_at
+          - expiration_date
+          - id
+          - percent_or_value
+          - updated_at
+          - user_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_coupons_response
+  description: Responses from the 'insert_coupons' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[coupons!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_coupons_response
+    inputTypeName: insert_coupons_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: ecommerce_db
+      dataConnectorObjectType: insert_coupons_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_coupons_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_coupons
+  outputType: insert_coupons_response!
+  arguments:
+    - name: objects
+      type: "[insert_coupons_object!]!"
+    - name: post_check
+      type: coupons_bool_exp
+      description: Insert permission predicate over the 'coupons' collection
+  source:
+    dataConnectorName: ecommerce_db
+    dataConnectorCommand:
+      procedure: insert_coupons
+  graphql:
+    rootFieldName: insert_coupons
+    rootFieldKind: Mutation
+  description: Insert into the coupons table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_coupons
+  permissions:
+    - role: admin
+      allowExecution: true
+
