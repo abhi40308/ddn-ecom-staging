@@ -44,6 +44,17 @@ definition:
           - status
           - updated_at
           - user_id
+    - role: user
+      output:
+        allowedFields:
+          - created_at
+          - delivery_date
+          - id
+          - is_reviewed
+          - product_id
+          - status
+          - updated_at
+          - user_id
 
 ---
 kind: AggregateExpression
@@ -114,6 +125,15 @@ definition:
     - role: admin
       select:
         filter: null
+        allowSubscriptions: true
+    - role: user
+      select:
+        filter:
+          fieldComparison:
+            field: user_id
+            operator: _eq
+            value:
+              sessionVariable: x-hasura-user-id
         allowSubscriptions: true
 
 ---
@@ -217,4 +237,3 @@ definition:
         - relationshipName: product
   graphql:
     expressionTypeName: orders_order_by_exp
-

@@ -1,7 +1,7 @@
-kind: AuthConfig
-version: v3
-definition:
-  mode:
-    noAuth:
-      role: admin
-      sessionVariables: {}
+# kind: AuthConfig
+# version: v3
+# definition:
+#   mode:
+#     noAuth:
+#       role: admin
+#       sessionVariables: {}

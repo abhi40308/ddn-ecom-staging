@@ -1,0 +1,41 @@
+kind: AuthConfig
+version: v4
+definition:
+  mode:
+    jwt:
+      claimsConfig:
+        namespace:
+          claimsFormat: Json
+          location: /claims.jwt.hasura.io
+      tokenLocation:
+        type: BearerAuthorization
+      key:
+        fixed:
+          algorithm: HS256
+          key:
+            value: a-string-secret-at-least-256-bits-long
+#######################
+#######################
+# Example token: jwt.io
+#######################
+#######################
+# Header
+# {
+#   "alg": "HS256",
+#   "kid": "sbkQ-WDT7drl3Vte4yobb169wTYMgBEhjG7psQyU6YU",
+#   "typ": "JWT"
+# }
+#
+# Payload
+# {
+#   "iat": 1735916718,
+#   "exp": 1796916677,
+#   "claims.jwt.hasura.io": {
+#     "x-hasura-default-role": "admin",
+#     "x-hasura-allowed-roles": ["user", "admin"],
+#     "x-hasura-user-id": "8dea1160-65b7-11ed-b907-e3c5123cb650"
+#   }
+# }
+#
+# Sign
+# a-string-secret-at-least-256-bits-long
