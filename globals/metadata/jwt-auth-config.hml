@@ -14,6 +14,12 @@ definition:
           algorithm: HS256
           key:
             value: a-string-secret-at-least-256-bits-long
+#
+#
+#
+#
+#
+#
 #######################
 #######################
 # Example token: jwt.io
@@ -39,3 +45,11 @@ definition:
 #
 # Sign
 # a-string-secret-at-least-256-bits-long
+#
+#
+#######################
+#### TOKEN ############
+#######################
+#
+# Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6InNia1EtV0RUN2RybDNWdGU0eW9iYjE2OXdUWU1nQkVoakc3cHNReVU2WVUiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE3MzU5MTY3MTgsImV4cCI6MTc5NjkxNjY3NywiY2xhaW1zLmp3dC5oYXN1cmEuaW8iOnsieC1oYXN1cmEtZGVmYXVsdC1yb2xlIjoidXNlciIsIngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciIsImFkbWluIl0sIngtaGFzdXJhLXVzZXItaWQiOiI3Y2YwYTY2Yy02NWI3LTExZWQtYjkwNC1mYjQ5ZjAzNGZiYmIifX0.x4FDCDdoBkDeXsVOeah8AZu2GRgc8RHTriSvcgvuv40
+#
