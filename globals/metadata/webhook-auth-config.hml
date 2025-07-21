@@ -1,26 +1,26 @@
-kind: AuthConfig
-version: v4
-definition:
-  mode:
-    webhook:
-      url:
-        value: https://webhook.site/698e3d77-3903-4660-9918-e9d4762e6652
-      method: POST
-      customHeadersConfig:
-        body:
-          headers:
-            forward:
-              - authorization
-              - content-type
-        headers:
-          additional:
-            user-agent: "Hasura DDN"
-#
-#
-# Example response:
-# {
-#     "X-Hasura-Role": "user",
-#     "X-Hasura-User-Id": "7cf0a66c-65b7-11ed-b904-fb49f034fbbb",
-#     "X-Hasura-Is-Owner": "true",
-#     "X-Hasura-Custom": "custom value"
-# }
+# kind: AuthConfig
+# version: v4
+# definition:
+#   mode:
+#     webhook:
+#       url:
+#         value: https://webhook.site/35d7cc1f-57f7-4714-899b-4a57fb15960d
+#       method: POST
+#       customHeadersConfig:
+#         body:
+#           headers:
+#             forward:
+#               - authorization
+#               - content-type
+#         headers:
+#           additional:
+#             user-agent: "Hasura DDN"
+# #
+# #
+# # Example response:
+# # {
+# #     "X-Hasura-Role": "user",
+# #     "X-Hasura-User-Id": "7cf0a66c-65b7-11ed-b904-fb49f034fbbb",
+# #     "X-Hasura-Is-Owner": "true",
+# #     "X-Hasura-Custom": "custom value"
+# # }
