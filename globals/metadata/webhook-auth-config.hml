@@ -15,12 +15,12 @@
 #         headers:
 #           additional:
 #             user-agent: "Hasura DDN"
-# #
-# #
-# # Example response:
-# # {
-# #     "X-Hasura-Role": "user",
-# #     "X-Hasura-User-Id": "7cf0a66c-65b7-11ed-b904-fb49f034fbbb",
-# #     "X-Hasura-Is-Owner": "true",
-# #     "X-Hasura-Custom": "custom value"
-# # }
+# # #
+# # #
+# # # Example response:
+# # # {
+# # #     "X-Hasura-Role": "user",
+# # #     "X-Hasura-User-Id": "7cf0a66c-65b7-11ed-b904-fb49f034fbbb",
+# # #     "X-Hasura-Is-Owner": "true",
+# # #     "X-Hasura-Custom": "custom value"
+# # # }

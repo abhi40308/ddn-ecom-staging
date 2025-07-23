@@ -7,6 +7,8 @@ definition:
         locations:
           x-hasura-default-role:
             literal: user
+          x-hasura-user-id:
+            literal: 8dea1160-65b7-11ed-b907-e3c5123cb650
           x-hasura-allowed-roles:
             literal:
               - user
