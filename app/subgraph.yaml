@@ -17,3 +17,5 @@ definition:
   connectors:
     - path: connector/ecommerce_db/connector.yaml
       connectorLinkName: ecommerce_db
+
+
